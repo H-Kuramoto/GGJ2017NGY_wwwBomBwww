@@ -19,7 +19,9 @@ bool TitleScene::init()
 		// 基底クラスの初期化が失敗なら、異常終了
 		return false;
 	}
-	
+
+	effect = Effect::Create(this, EffectID::BombExplode);
+
 	// 画面サイズ
 	Size windowSize = _director->getVisibleSize();
 
@@ -47,6 +49,22 @@ bool TitleScene::init()
 			_director->replaceScene(nextScene);
 		}
 	});
+
+	EventListenerTouchOneByOne* listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = ([&](Touch* touch, Event* pEvent)
+	{
+		Vec2 touchPos = touch->getLocation();
+		effect->SetPosition(touchPos);
+		effect->Start();
+		return true;
+	});
+
+	listener->onTouchEnded = ([&](Touch* touch, Event* pEvent)
+	{
+		log("touch ended");
+		effect->End();
+	});
+	_director->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 	return true;
 }

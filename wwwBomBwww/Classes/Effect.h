@@ -21,30 +21,30 @@ enum EffectID
 class Effect
 {
 	private:
-		// Š‘®æƒV[ƒ“
+		// æ‰€å±žå…ˆã‚·ãƒ¼ãƒ³
 		cocos2d::Scene* m_currentScene;
 		
-		// ƒXƒvƒ‰ƒCƒg
+		// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 		cocos2d::Sprite* m_sprite;
 
-		// ƒAƒjƒ[ƒVƒ‡ƒ“
+		// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 		cocos2d::Animation* m_animation;
 
 		cocos2d::Animate* m_animate;
 
-		// À•W
+		// åº§æ¨™
 		cocos2d::Vec2 m_position;
 
-		// ŠJŽnŽž‚Éˆê“x‚¾‚¯s‚¤ƒAƒjƒ[ƒVƒ‡ƒ“(ƒ‹[ƒvŽž‚É‚Ís‚í‚È‚¢)
+		// é–‹å§‹æ™‚ã«ä¸€åº¦ã ã‘è¡Œã†ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(ãƒ«ãƒ¼ãƒ—æ™‚ã«ã¯è¡Œã‚ãªã„)
 		cocos2d::Vector<cocos2d::FiniteTimeAction*> m_onceAction;
 
-		// ŠJŽnŽž‚És‚¤ƒAƒjƒ[ƒVƒ‡ƒ“(ƒ‹[ƒvŽž‚É‚às‚¤)
+		// é–‹å§‹æ™‚ã«è¡Œã†ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(ãƒ«ãƒ¼ãƒ—æ™‚ã«ã‚‚è¡Œã†)
 		cocos2d::Vector<cocos2d::FiniteTimeAction*> m_startAction;
 
-		// Á–Å‘O‚És‚¤ƒAƒjƒ[ƒVƒ‡ƒ“
+		// æ¶ˆæ»…å‰ã«è¡Œã†ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 		cocos2d::Vector<cocos2d::FiniteTimeAction*> m_endAction;
 
-		// ƒ‹[ƒv‚³‚¹‚é‚©
+		// ãƒ«ãƒ¼ãƒ—ã•ã›ã‚‹ã‹
 		bool m_loopFlg;
 	public:
 		virtual bool init();

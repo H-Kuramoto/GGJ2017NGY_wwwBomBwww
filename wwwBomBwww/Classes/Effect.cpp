@@ -21,18 +21,18 @@ Effect* Effect::Create(Scene* scene, EffectID id)
 	effect->m_animation = Animation::create();
 	effect->m_currentScene = scene;
 
-	// ƒ‹[ƒv‚ÍƒfƒtƒHƒ‹ƒg‚Å‚·‚é‚æ‚¤‚É
+	// ãƒ«ãƒ¼ãƒ—ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã™ã‚‹ã‚ˆã†ã«
 	effect->m_loopFlg = true;
 
-	// ‚±‚±‚©‚ç•ªŠò
+	// ã“ã“ã‹ã‚‰åˆ†å²
 	switch (id)
 	{
 		case ChargeEffect:
-			// ƒXƒvƒ‰ƒCƒgƒAƒjƒ[ƒVƒ‡ƒ“‚Ì“Ç‚İ‚İ
+			// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®èª­ã¿è¾¼ã¿
 			for (int i = 1; i <= 15; i++)
 			{
 				char c[128];
-				sprintf_s(c, "effects/charge_effect/charge_effect_%02d.png", i);
+				sprintf(c, "effects/charge_effect/charge_effect_%02d.png", i);
 				effect->m_animation->addSpriteFrameWithFileName(c);
 			}
 			effect->m_animation->setDelayPerUnit(0.02f);
@@ -42,11 +42,11 @@ Effect* Effect::Create(Scene* scene, EffectID id)
 			effect->m_endAction.pushBack(ScaleTo::create(effect->m_animation->getDuration(), 0));
 			break;
 		case BombExplode:
-			// ƒXƒvƒ‰ƒCƒgƒAƒjƒ[ƒVƒ‡ƒ“‚Ì“Ç‚İ‚İ
+			// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®èª­ã¿è¾¼ã¿
 			for (int i = 1; i <= 33; i++)
 			{
 				char c[128];
-				sprintf_s(c, "effects/bomb_explode/bomb_explode_%02d.png", i);
+				sprintf(c, "effects/bomb_explode/bomb_explode_%02d.png", i);
 				effect->m_animation->addSpriteFrameWithFileName(c);
 			}
 			effect->m_animation->setDelayPerUnit(0.02f);
@@ -84,9 +84,9 @@ Effect* Effect::Create(Scene* scene, EffectID id)
 			break;
 	}
 
-	// ‚±‚±‚Ü‚Å•ªŠò
+	// ã“ã“ã¾ã§åˆ†å²
 
-	// ƒAƒjƒ[ƒVƒ‡ƒ“‚ªÁ‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒæ¶ˆãˆãªã„ã‚ˆã†ã«ã™ã‚‹
 	effect->m_animation->retain();
 
 	return effect;
@@ -106,17 +106,17 @@ void Effect::Start()
 
 	m_sprite->setPosition(m_position);
 
-	// ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔŠu
+	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³é–“éš”
 	m_animation->setRestoreOriginalFrame(false);
 
 	if(m_onceAction.size() > 0)
-	// ŠJn‚Éˆê“x‚¾‚¯s‚¤ƒAƒjƒ[ƒVƒ‡ƒ“
+	// é–‹å§‹æ™‚ã«ä¸€åº¦ã ã‘è¡Œã†ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 	m_sprite->runAction(
 		Sequence::create(m_onceAction)
 	);
 
 	if (m_startAction.size() > 0)
-	// ŠJn‚És‚¤ƒAƒjƒ[ƒVƒ‡ƒ“(ƒ‹[ƒv‚É‚às‚¤)
+	// é–‹å§‹æ™‚ã«è¡Œã†ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(ãƒ«ãƒ¼ãƒ—æ™‚ã«ã‚‚è¡Œã†)
 	m_sprite->runAction(
 		RepeatForever::create(
 			Sequence::create(m_startAction)
@@ -124,7 +124,7 @@ void Effect::Start()
 		);
 
 	if(m_loopFlg)
-	// ƒXƒvƒ‰ƒCƒgƒAƒjƒ[ƒVƒ‡ƒ“
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 	m_sprite->runAction(
 		RepeatForever::create(
 			Animate::create(m_animation)
@@ -170,7 +170,7 @@ void Effect::End()
 /*
 Sprite* EffectManager::EffectPurified(Point location, std::string name, bool loop)
 {
-	// ƒ‹[ƒv‚©
+	// ãƒ«ãƒ¼ãƒ—ã‹
 	Animation* animation = Animation::create();
 	for (int i = 1; i <= 15; i++)
 	{
@@ -179,7 +179,7 @@ Sprite* EffectManager::EffectPurified(Point location, std::string name, bool loo
 		animation->addSpriteFrameWithFileName(c);
 	}
 
-	// ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔŠu
+	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³é–“éš”
 	animation->setDelayPerUnit(0.02f);
 	animation->setRestoreOriginalFrame(true);
 

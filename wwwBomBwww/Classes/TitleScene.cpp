@@ -7,45 +7,48 @@
 // ---------------------------------------
 
 #include "TitleScene.h"
-#include <ui\UIButton.h>
+#include "extensions/cocos-ext.h"
+
+#include "GameScene.hpp"
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 
 bool TitleScene::init()
 {
-	// Šî’êƒNƒ‰ƒX‚Ì‰Šú‰»
+	// åŸºåº•ã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–
 	if (!Scene::init())
 	{
-		// Šî’êƒNƒ‰ƒX‚Ì‰Šú‰»‚ªŽ¸”s‚È‚çAˆÙíI—¹
+		// åŸºåº•ã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–ãŒå¤±æ•—ãªã‚‰ã€ç•°å¸¸çµ‚äº†
 		return false;
 	}
 
 	effect = Effect::Create(this, EffectID::BombExplode);
 
-	// ‰æ–ÊƒTƒCƒY
+	// ç”»é¢ã‚µã‚¤ã‚º
 	Size windowSize = _director->getVisibleSize();
 
-	// ”wŒi‚Ìì¬A’Ç‰Á
+	// èƒŒæ™¯ã®ä½œæˆã€è¿½åŠ 
 	Sprite* background = Sprite::create("title/title_back.png");
 	background->setPosition(Vec2(windowSize.width / 2, windowSize.height / 2));
 	addChild(background);
 
-	// ƒXƒ^[ƒgƒ{ƒ^ƒ“‚Ìì¬A’Ç‰Á
+	// ã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³ã®ä½œæˆã€è¿½åŠ 
 	ui::Button* startButton = ui::Button::create("title/start_button.png");
 	startButton->setPosition(Vec2(windowSize.width / 2, 300));
 	addChild(startButton);
 
-	// ƒXƒ^[ƒgƒ{ƒ^ƒ“‚ÌƒAƒNƒVƒ‡ƒ“
+	// ã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 	startButton->addTouchEventListener([&](Ref* ref, ui::Widget::TouchEventType eventType)
 	{
-		// ƒ{ƒ^ƒ“‚ª—£‚³‚ê‚½‚ç
+		// ãƒœã‚¿ãƒ³ãŒé›¢ã•ã‚ŒãŸã‚‰
 		if (eventType == ui::Widget::TouchEventType::ENDED)
 		{
-			// ŽŸ‚ÌƒV[ƒ“‚Ìì¬
-			Scene* nextScene = TitleScene::create();
+			// æ¬¡ã®ã‚·ãƒ¼ãƒ³ã®ä½œæˆ
+			Scene* nextScene = GameScene::create();
 			nextScene = TransitionFade::create(1.0f, nextScene, Color3B::BLACK);
 
-			// ŽŸ‚ÌƒV[ƒ“‚ÉˆÚ“®
+			// æ¬¡ã®ã‚·ãƒ¼ãƒ³ã«ç§»å‹•
 			_director->replaceScene(nextScene);
 		}
 	});

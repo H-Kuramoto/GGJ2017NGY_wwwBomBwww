@@ -84,6 +84,22 @@
 		EE77D5FB1E33535A00B8A052 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5F81E33535A00B8A052 /* GameLayer.cpp */; };
 		EE77D5FE1E337ECB00B8A052 /* AnimationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */; };
 		EE77D5FF1E337ECB00B8A052 /* AnimationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */; };
+		EE77D6071E338CB400B8A052 /* Effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6011E338CB400B8A052 /* Effect.cpp */; };
+		EE77D6091E338CB400B8A052 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6051E338CB400B8A052 /* TitleScene.cpp */; };
+		EE77D6101E338CF100B8A052 /* effects in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60B1E338CF100B8A052 /* effects */; };
+		EE77D6111E338CF100B8A052 /* title in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60C1E338CF100B8A052 /* title */; };
+		EE77D6121E338CF100B8A052 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60D1E338CF100B8A052 /* go.png */; };
+		EE77D6131E338CF100B8A052 /* ready.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60E1E338CF100B8A052 /* ready.png */; };
+		EE77D6141E338CF100B8A052 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60F1E338CF100B8A052 /* win.png */; };
+		EE77D6171E33975100B8A052 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6051E338CB400B8A052 /* TitleScene.cpp */; };
+		EE77D6181E3397A300B8A052 /* Effect.h in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6021E338CB400B8A052 /* Effect.h */; };
+		EE77D6191E3397A400B8A052 /* Effect.h in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6021E338CB400B8A052 /* Effect.h */; };
+		EE77D61A1E3397AF00B8A052 /* Effect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6011E338CB400B8A052 /* Effect.cpp */; };
+		EE77D61C1E3399A900B8A052 /* effects in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60B1E338CF100B8A052 /* effects */; };
+		EE77D61E1E3399AD00B8A052 /* title in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60C1E338CF100B8A052 /* title */; };
+		EE77D61F1E3399B700B8A052 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60D1E338CF100B8A052 /* go.png */; };
+		EE77D6201E3399B700B8A052 /* ready.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60E1E338CF100B8A052 /* ready.png */; };
+		EE77D6211E3399B700B8A052 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60F1E338CF100B8A052 /* win.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +216,15 @@
 		EE77D5F91E33535A00B8A052 /* GameLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameLayer.hpp; sourceTree = "<group>"; };
 		EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationManager.cpp; sourceTree = "<group>"; };
 		EE77D5FD1E337ECB00B8A052 /* AnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationManager.h; sourceTree = "<group>"; };
+		EE77D6011E338CB400B8A052 /* Effect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Effect.cpp; sourceTree = "<group>"; };
+		EE77D6021E338CB400B8A052 /* Effect.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Effect.h; sourceTree = "<group>"; };
+		EE77D6051E338CB400B8A052 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
+		EE77D6061E338CB400B8A052 /* TitleScene.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = TitleScene.h; sourceTree = "<group>"; };
+		EE77D60B1E338CF100B8A052 /* effects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = effects; sourceTree = "<group>"; };
+		EE77D60C1E338CF100B8A052 /* title */ = {isa = PBXFileReference; lastKnownFileType = folder; path = title; sourceTree = "<group>"; };
+		EE77D60D1E338CF100B8A052 /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
+		EE77D60E1E338CF100B8A052 /* ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ready.png; sourceTree = "<group>"; };
+		EE77D60F1E338CF100B8A052 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +349,11 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EE77D60B1E338CF100B8A052 /* effects */,
+				EE77D60C1E338CF100B8A052 /* title */,
+				EE77D60D1E338CF100B8A052 /* go.png */,
+				EE77D60E1E338CF100B8A052 /* ready.png */,
+				EE77D60F1E338CF100B8A052 /* win.png */,
 				EE77D5EB1E32EB7700B8A052 /* GameScene */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
@@ -338,6 +368,10 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EE77D6011E338CB400B8A052 /* Effect.cpp */,
+				EE77D6021E338CB400B8A052 /* Effect.h */,
+				EE77D6051E338CB400B8A052 /* TitleScene.cpp */,
+				EE77D6061E338CB400B8A052 /* TitleScene.h */,
 				EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */,
 				EE77D5FD1E337ECB00B8A052 /* AnimationManager.h */,
 				EE77D5E61E32E53F00B8A052 /* MultiResolution.h */,
@@ -521,7 +555,9 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				EE77D6141E338CF100B8A052 /* win.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				EE77D6111E338CF100B8A052 /* title in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
@@ -529,8 +565,10 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				EE77D6131E338CF100B8A052 /* ready.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				EE77D6101E338CF100B8A052 /* effects in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
@@ -538,6 +576,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				EE77D6121E338CF100B8A052 /* go.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -548,13 +587,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE77D6211E3399B700B8A052 /* win.png in Resources */,
+				EE77D61E1E3399AD00B8A052 /* title in Resources */,
 				EE77D5ED1E32EB7700B8A052 /* GameScene in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				EE77D6201E3399B700B8A052 /* ready.png in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
+				EE77D61F1E3399B700B8A052 /* go.png in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
+				EE77D61C1E3399A900B8A052 /* effects in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +613,8 @@
 				EE77D5E91E32E87600B8A052 /* WaveTile.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				EE77D6071E338CB400B8A052 /* Effect.cpp in Sources */,
+				EE77D6181E3397A300B8A052 /* Effect.h in Sources */,
 				EE77D5FE1E337ECB00B8A052 /* AnimationManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EE77D5FA1E33535A00B8A052 /* GameLayer.cpp in Sources */,
@@ -576,6 +622,7 @@
 				EE77D5E41E32E40700B8A052 /* GameScene.cpp in Sources */,
 				EE77D5F11E32F84100B8A052 /* WaveManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				EE77D6091E338CB400B8A052 /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,10 +633,13 @@
 				EE77D5FF1E337ECB00B8A052 /* AnimationManager.cpp in Sources */,
 				EE77D5F71E33429B00B8A052 /* Bomb.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				EE77D6171E33975100B8A052 /* TitleScene.cpp in Sources */,
+				EE77D61A1E3397AF00B8A052 /* Effect.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				EE77D5EA1E32E87600B8A052 /* WaveTile.cpp in Sources */,
 				EE77D5E51E32E40700B8A052 /* GameScene.cpp in Sources */,
 				EE77D5FB1E33535A00B8A052 /* GameLayer.cpp in Sources */,
+				EE77D6191E3397A400B8A052 /* Effect.h in Sources */,
 				EE77D5F21E32F84100B8A052 /* WaveManager.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);

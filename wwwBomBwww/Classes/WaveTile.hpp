@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 
-#define SCALE_MAX 5.0f
+#define SCALE_MAX 1.0f
 #define SCALE_MIN 0.5f
 #define SPEED_MAX 10.0f
 #define POWER_MAX 10.0f
@@ -29,18 +29,23 @@ public:
         STOP = 0,
         RGHITE = 1
     };
+    struct WaveStatus
+    {
+        MOVE_DIR dir;
+        float power;   // 波の力
+    };
     
     CREATE_FUNC(WaveTile);
     bool init();
     void update(float delta);
 
-    void moveWave();
-    void affectedByWaves(MOVE_DIR dir, float speed, float power);
+    void affectedByWaves(WaveStatus otherStatus);
     
     
-    MOVE_DIR _dir;
-    float _speed;   // 波の速度
-    float _power;   // 波の力
+    WaveStatus _status;
+    
+        
+    
 private:
     
     

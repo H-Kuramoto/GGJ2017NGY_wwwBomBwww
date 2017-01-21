@@ -76,6 +76,14 @@
 		EE77D5EA1E32E87600B8A052 /* WaveTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5E71E32E87600B8A052 /* WaveTile.cpp */; };
 		EE77D5EC1E32EB7700B8A052 /* GameScene in Resources */ = {isa = PBXBuildFile; fileRef = EE77D5EB1E32EB7700B8A052 /* GameScene */; };
 		EE77D5ED1E32EB7700B8A052 /* GameScene in Resources */ = {isa = PBXBuildFile; fileRef = EE77D5EB1E32EB7700B8A052 /* GameScene */; };
+		EE77D5F11E32F84100B8A052 /* WaveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5EF1E32F84100B8A052 /* WaveManager.cpp */; };
+		EE77D5F21E32F84100B8A052 /* WaveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5EF1E32F84100B8A052 /* WaveManager.cpp */; };
+		EE77D5F61E33429B00B8A052 /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5F41E33429B00B8A052 /* Bomb.cpp */; };
+		EE77D5F71E33429B00B8A052 /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5F41E33429B00B8A052 /* Bomb.cpp */; };
+		EE77D5FA1E33535A00B8A052 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5F81E33535A00B8A052 /* GameLayer.cpp */; };
+		EE77D5FB1E33535A00B8A052 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5F81E33535A00B8A052 /* GameLayer.cpp */; };
+		EE77D5FE1E337ECB00B8A052 /* AnimationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */; };
+		EE77D5FF1E337ECB00B8A052 /* AnimationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +192,14 @@
 		EE77D5E71E32E87600B8A052 /* WaveTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveTile.cpp; sourceTree = "<group>"; };
 		EE77D5E81E32E87600B8A052 /* WaveTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WaveTile.hpp; sourceTree = "<group>"; };
 		EE77D5EB1E32EB7700B8A052 /* GameScene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GameScene; sourceTree = "<group>"; };
+		EE77D5EF1E32F84100B8A052 /* WaveManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveManager.cpp; sourceTree = "<group>"; };
+		EE77D5F01E32F84100B8A052 /* WaveManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WaveManager.hpp; sourceTree = "<group>"; };
+		EE77D5F41E33429B00B8A052 /* Bomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bomb.cpp; sourceTree = "<group>"; };
+		EE77D5F51E33429B00B8A052 /* Bomb.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bomb.hpp; sourceTree = "<group>"; };
+		EE77D5F81E33535A00B8A052 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
+		EE77D5F91E33535A00B8A052 /* GameLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameLayer.hpp; sourceTree = "<group>"; };
+		EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationManager.cpp; sourceTree = "<group>"; };
+		EE77D5FD1E337ECB00B8A052 /* AnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +338,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EE77D5FC1E337ECB00B8A052 /* AnimationManager.cpp */,
+				EE77D5FD1E337ECB00B8A052 /* AnimationManager.h */,
 				EE77D5E61E32E53F00B8A052 /* MultiResolution.h */,
 				EE77D5DE1E32E3D400B8A052 /* GameScene */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
@@ -387,6 +405,12 @@
 				EE77D5E31E32E40700B8A052 /* GameScene.hpp */,
 				EE77D5E71E32E87600B8A052 /* WaveTile.cpp */,
 				EE77D5E81E32E87600B8A052 /* WaveTile.hpp */,
+				EE77D5EF1E32F84100B8A052 /* WaveManager.cpp */,
+				EE77D5F01E32F84100B8A052 /* WaveManager.hpp */,
+				EE77D5F41E33429B00B8A052 /* Bomb.cpp */,
+				EE77D5F51E33429B00B8A052 /* Bomb.hpp */,
+				EE77D5F81E33535A00B8A052 /* GameLayer.cpp */,
+				EE77D5F91E33535A00B8A052 /* GameLayer.hpp */,
 			);
 			name = GameScene;
 			sourceTree = "<group>";
@@ -541,12 +565,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE77D5F61E33429B00B8A052 /* Bomb.cpp in Sources */,
 				EE77D5E91E32E87600B8A052 /* WaveTile.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				EE77D5FE1E337ECB00B8A052 /* AnimationManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				EE77D5FA1E33535A00B8A052 /* GameLayer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				EE77D5E41E32E40700B8A052 /* GameScene.cpp in Sources */,
+				EE77D5F11E32F84100B8A052 /* WaveManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,10 +583,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE77D5FF1E337ECB00B8A052 /* AnimationManager.cpp in Sources */,
+				EE77D5F71E33429B00B8A052 /* Bomb.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				EE77D5EA1E32E87600B8A052 /* WaveTile.cpp in Sources */,
 				EE77D5E51E32E40700B8A052 /* GameScene.cpp in Sources */,
+				EE77D5FB1E33535A00B8A052 /* GameLayer.cpp in Sources */,
+				EE77D5F21E32F84100B8A052 /* WaveManager.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

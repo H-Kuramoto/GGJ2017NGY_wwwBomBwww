@@ -7,6 +7,7 @@
 //
 
 #include "GameScene.hpp"
+#include "MultiResolution.h"
 
 bool GameScene::init()
 {
@@ -14,6 +15,9 @@ bool GameScene::init()
     {
         return false;
     }
+    
+    _gameLayer = GameLayer::create();
+    this->addChild(_gameLayer);
     
     this->scheduleUpdate();
     return true;

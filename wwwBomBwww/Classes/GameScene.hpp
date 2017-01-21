@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "GameLayer.hpp"
 
 USING_NS_CC;
 
@@ -20,6 +21,8 @@ public:
     CREATE_FUNC(GameScene);
     bool init();
     void update(float delta);
+    
+    GameLayer *_gameLayer;
     
 private:
 

@@ -15,11 +15,11 @@ bool Effect::init()
 	return true;
 }
 
-Effect* Effect::Create(Scene* scene, EffectID id)
+Effect* Effect::Create(Node* scene, EffectID id)
 {
 	Effect* effect = new Effect();
 	effect->m_animation = Animation::create();
-	effect->m_currentScene = scene;
+	effect->m_currentNode = scene;
 
 	// ループはデフォルトでするように
 	effect->m_loopFlg = true;
@@ -145,7 +145,7 @@ void Effect::Start()
 			);
 			
 
-	m_currentScene->addChild(m_sprite, INT_MAX);
+	m_currentNode->addChild(m_sprite, INT_MAX);
 
 }
 

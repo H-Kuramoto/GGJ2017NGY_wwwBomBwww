@@ -210,13 +210,20 @@ void WaveManager::onTouchesMoved(const std::vector<Touch *> &touches, cocos2d::E
 
 void WaveManager::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
+    
+    GameLayer *layer = (GameLayer*)(this->getParent()->getParent());
+    
     if(keyCode == cocos2d::EventKeyboard::KeyCode::KEY_S)
     {
+        _power[0] = 1.0f;
         _isTouching[0] = true;
+        layer->_playerSp[0]->powerCharge();
     }
     if(keyCode == cocos2d::EventKeyboard::KeyCode::KEY_L)
     {
+        _power[1] = 1.0f;
         _isTouching[1] = true;
+        layer->_playerSp[1]->powerCharge();
     }
 
     
@@ -229,7 +236,9 @@ void WaveManager::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d
     int elem;
     float pow;
     
-    if(keyCode == cocos2d::EventKeyboard::KeyCode::KEY_S)
+    GameLayer *layer = (GameLayer*)(this->getParent()->getParent());
+    
+    if(keyCode == cocos2d::EventKeyboard::KeyCode::KEY_S) // 左のキャラ
     {
         dir = WaveTile::MOVE_DIR::RGHITE;
         elem = 0;
@@ -240,8 +249,11 @@ void WaveManager::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d
         _power[0] = 0.0f;
         _isTouching[0] = false;
 
+        _isTouching[0] = true;
+        layer->_playerSp[0]->appearWave();
+        
     }
-    if(keyCode == cocos2d::EventKeyboard::KeyCode::KEY_L)
+    if(keyCode == cocos2d::EventKeyboard::KeyCode::KEY_L) // 右のキャラ
     {
         dir = WaveTile::MOVE_DIR::LEFT;
         elem = WAVE_TILE_MAX - 1;
@@ -251,6 +263,9 @@ void WaveManager::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d
         
         _power[1] = 0.0f;
         _isTouching[1] = false;
+        
+        _isTouching[1] = true;
+        layer->_playerSp[1]->appearWave();
     }
 
 }
@@ -260,35 +275,4 @@ int WaveManager::makeAffectTiming(float wavePower)
     float n = 1 - (_power[1] / POWER_MAX);
     return  ceil((1 - n) * WAVE_AFFECT_TIMING_MAX + n * WAVE_AFFECT_TIMING_MIN - 1);
 }
-
-//bool WaveManager::onTouchBegan(Touch *_touch, Event *event)
-//{
-//    return true;
-//}
-//
-//void WaveManager::onTouchMoved(Touch *_touch, Event *event)
-//{
-//}
-//
-//void WaveManager::onTouchEnded(Touch *_touch, Event *event)
-//{
-//    WaveTile::MOVE_DIR dir;
-//    int elem;
-//    
-//    if(_touch->getLocation().x < designResolutionSize.width/2)
-//    {
-//        dir = WaveTile::MOVE_DIR::RGHITE;
-//        elem = 0;
-//    }
-//    else
-//    {
-//        dir = WaveTile::MOVE_DIR::LEFT;
-//        elem = WAVE_TILE_MAX - 1;
-//    }
-//    
-//    startWave(elem, dir, 5.0f);
-// 
-//    
-//    log("toutch");
-//}
 

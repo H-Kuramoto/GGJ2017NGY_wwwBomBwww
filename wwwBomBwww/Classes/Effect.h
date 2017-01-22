@@ -22,7 +22,7 @@ class Effect
 {
 	private:
 		// 所属先シーン
-		cocos2d::Scene* m_currentScene;
+		cocos2d::Node* m_currentNode;
 		
 		// スプライト
 		cocos2d::Sprite* m_sprite;
@@ -49,7 +49,7 @@ class Effect
 	public:
 		virtual bool init();
 
-		static Effect* Create(cocos2d::Scene* scene, EffectID id);
+		static Effect* Create(cocos2d::Node* scene, EffectID id);
 
 		void SetPosition(cocos2d::Vec2 position);
 

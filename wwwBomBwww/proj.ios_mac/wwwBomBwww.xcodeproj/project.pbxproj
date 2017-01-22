@@ -100,6 +100,8 @@
 		EE77D61F1E3399B700B8A052 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60D1E338CF100B8A052 /* go.png */; };
 		EE77D6201E3399B700B8A052 /* ready.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60E1E338CF100B8A052 /* ready.png */; };
 		EE77D6211E3399B700B8A052 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60F1E338CF100B8A052 /* win.png */; };
+		EE77D6261E34335500B8A052 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6241E34335500B8A052 /* Player.cpp */; };
+		EE77D6271E34335500B8A052 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6241E34335500B8A052 /* Player.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +227,8 @@
 		EE77D60D1E338CF100B8A052 /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
 		EE77D60E1E338CF100B8A052 /* ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ready.png; sourceTree = "<group>"; };
 		EE77D60F1E338CF100B8A052 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
+		EE77D6241E34335500B8A052 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		EE77D6251E34335500B8A052 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +449,8 @@
 				EE77D5F51E33429B00B8A052 /* Bomb.hpp */,
 				EE77D5F81E33535A00B8A052 /* GameLayer.cpp */,
 				EE77D5F91E33535A00B8A052 /* GameLayer.hpp */,
+				EE77D6241E34335500B8A052 /* Player.cpp */,
+				EE77D6251E34335500B8A052 /* Player.hpp */,
 			);
 			name = GameScene;
 			sourceTree = "<group>";
@@ -623,6 +629,7 @@
 				EE77D5F11E32F84100B8A052 /* WaveManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				EE77D6091E338CB400B8A052 /* TitleScene.cpp in Sources */,
+				EE77D6261E34335500B8A052 /* Player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +645,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				EE77D5EA1E32E87600B8A052 /* WaveTile.cpp in Sources */,
 				EE77D5E51E32E40700B8A052 /* GameScene.cpp in Sources */,
+				EE77D6271E34335500B8A052 /* Player.cpp in Sources */,
 				EE77D5FB1E33535A00B8A052 /* GameLayer.cpp in Sources */,
 				EE77D6191E3397A400B8A052 /* Effect.h in Sources */,
 				EE77D5F21E32F84100B8A052 /* WaveManager.cpp in Sources */,

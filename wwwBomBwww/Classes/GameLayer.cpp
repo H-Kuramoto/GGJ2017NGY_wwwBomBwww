@@ -8,6 +8,9 @@
 
 #include "GameLayer.hpp"
 #include "MultiResolution.h"
+
+#include "AnimationManager.h"
+
 bool GameLayer::init()
 {
     if(!Layer::init())
@@ -34,6 +37,21 @@ bool GameLayer::init()
     _waveRegioin->addChild(_bomb);
     
     
+    AnimationManager::addAnimationCachePluralFile("GameScene/player/main/player_0%d.png", player_Charge_animName, 1, 3, false, 0.2f);
+    AnimationManager::addAnimationCachePluralFile("GameScene/player/result/player_left_win_0%d.png", player_win_AnimName, 1, 2, false, 0.2);
+    
+    float height = 550.0f;
+    
+    _playerSp[0] = new Player();
+    this->addChild(_playerSp[0]);
+    _playerSp[0]->init(true);
+    _playerSp[0]->setPosition(Vec2(200,height));
+    
+    _playerSp[1] = new Player();
+    this->addChild(_playerSp[1]);
+    _playerSp[1]->init(false);
+    _playerSp[1]->setPosition(Vec2(designResolutionSize.width - 200,height));
+    
     
     Sprite *gakeSp = Sprite::create("GameScene/backGround/main_field.png");
     gakeSp->setPosition(
@@ -41,7 +59,10 @@ bool GameLayer::init()
                         gakeSp->getBoundingBox().size.height/2
                         );
     this->addChild(gakeSp);
-
+    
+    
+    
+    
     
     this->scheduleUpdate();
     
@@ -50,5 +71,56 @@ bool GameLayer::init()
 
 void GameLayer::update(float delta)
 {
-    
 }
+
+void GameLayer::gameFinish()
+{
+    // 爆弾が開始地点からどちらに近いか
+    float dis = _bomb->getPositionX() - WAVE_REGION_WIDTH/2;
+    
+    bool winLeft;
+    
+    if(dis < 0) // 左の負け
+    {
+        winLeft = false;
+        log ("WIN_RIGHT");
+    }
+    else if(dis > 0) // 右の負け
+    {
+        winLeft = true;
+        log("WIN_LEFT");
+    }
+    else // 引き分け
+    {
+        for(int i = 0; i < 2; i++)
+        {
+            _playerSp[i]->result(false);
+        }
+        log("DOROW");
+        return;
+    }
+    
+    _playerSp[0]->result(winLeft);
+    _playerSp[1]->result(!winLeft);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

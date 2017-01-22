@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "WaveManager.hpp"
 #include "Bomb.hpp"
+#include "Player.hpp"
 
 USING_NS_CC;
 
@@ -26,7 +27,10 @@ public:
     Node *_waveRegioin;
     WaveManager *_waveManager;
     Bomb        *_bomb;
+    Player      *_playerSp[2];
     
+    
+    void gameFinish();
 private:
     
     

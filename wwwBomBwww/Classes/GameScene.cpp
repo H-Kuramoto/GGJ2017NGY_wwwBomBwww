@@ -31,7 +31,7 @@ bool GameScene::init()
                                designResolutionSize.height/1.3f)
                           );
     
-    _startEffect = Effect::Create(this, EffectID::Ready);
+    _startEffect = Effect::Create(this, this->getPosition(), EffectID::Ready);
     _startEffect->Start();
     
     
@@ -59,7 +59,12 @@ bool GameScene::init()
 
 void GameScene::update(float delta)
 {
-    if(_isPlay && _frameCnt % 60 == 0)
+//    if(!_isPlay && _startEffect)
+//    {
+//        
+//    }
+    
+    if(_frameCnt > 0 && _isPlay && _frameCnt % 60 == 0)
     {
         _time--;
         

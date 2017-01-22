@@ -73,7 +73,7 @@ public:
 	 * tag		 : 0以外の数値を入れればアニメーションにタグを付ける。
 	 * loop		 : 無限ループさせるか
 	 */
-	static void *runParaparaAnimation(Sprite *target, const char *cacheName, int tag = 0, bool loop = true);
+	static void *runParaparaAnimation(Sprite *target, const char *cacheName, bool loop = true, int tag = 0);
 
 	/**
 	 ActionIntervalの取得

@@ -10,6 +10,7 @@
 #define Bomb_hpp
 
 #define BOMB_GRAVITY 0.5f
+#define bomb_AnimName "bombAnim"
 
 #include <stdio.h>
 #include "cocos2d.h"

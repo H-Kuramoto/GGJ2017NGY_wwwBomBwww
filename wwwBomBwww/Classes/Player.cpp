@@ -39,7 +39,11 @@ bool Player::init(bool isLeftChara)
     this->initWithFile("GameScene/player/main/player_01.png");
     this->setFlippedX(!isLeftChara);
     
-    _effect = Effect::Create(this, EffectID::ChargeEffect);
+    _effect = Effect::Create(this,Vec2(this->getBoundingBox().size.width/2,
+                                       this->getBoundingBox().size.height/2),
+                             EffectID::ChargeEffect
+                             );
+    
     _effect->SetPosition(Vec2(
                                 this->getBoundingBox().size.width/2,
                                 this->getBoundingBox().size.height/2
@@ -72,15 +76,42 @@ void Player::appearWave()
 
 void Player::result(bool isWin)
 {
+    
+    Sprite *resultSp = Sprite::create();
+    this->addChild(resultSp);
+    resultSp->setPosition(Vec2(
+                               this->getBoundingBox().size.width/2,
+                               this->getBoundingBox().size.height/2
+                               )
+                          );
+    
     if(isWin)
     {
+        resultSp->setTexture("GameScene/result/win.png");
         this->stopAllActions();
         AnimationManager::runParaparaAnimation(this, player_win_AnimName);
     }
     else
     {
+        resultSp->setTexture("GameScene/result/lose.png");
         this->setTexture("GameScene/player/result/player_left_lose_01.png");
     }
+    
+    resultSp->setScale(0.0f);
+    
+    float offset = 100;
+    if(!_isLeftChara) offset = -offset;
+    
+    float logoAppTime = 1.5f;
+    
+    resultSp->runAction(Sequence::create(Spawn::create(EaseBounceOut::create(MoveBy::create(logoAppTime,Vec2(offset, 400))),
+                                                       ScaleTo::create(logoAppTime, 1.0f),
+                                                       NULL),
+                                         NULL
+                                         )
+                        );
+    
+    
 }
 
 void Player::reset()

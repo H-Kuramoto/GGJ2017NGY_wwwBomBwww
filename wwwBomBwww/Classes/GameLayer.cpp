@@ -100,6 +100,8 @@ void GameLayer::gameFinish()
         return;
     }
     
+    AnimationManager::runParaparaAnimation(_bomb, bomb_AnimName, false);
+    
     _playerSp[0]->result(winLeft);
     _playerSp[1]->result(!winLeft);
 }

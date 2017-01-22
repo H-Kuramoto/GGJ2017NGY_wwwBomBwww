@@ -7,6 +7,7 @@
 //
 
 #include "Bomb.hpp"
+#include "AnimationManager.h"
 
 bool Bomb::init()
 {
@@ -19,6 +20,7 @@ bool Bomb::init()
     this->setScale(0.5f);
     this->scheduleUpdate();
     
+    AnimationManager::addAnimationCachePluralFile("effects/bomb_explode/bomb_explode_%02d.png", bomb_AnimName, 1, 33, false, 1.0f);
     
     return true;
 }

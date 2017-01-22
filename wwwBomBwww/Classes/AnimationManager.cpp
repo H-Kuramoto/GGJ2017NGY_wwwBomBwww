@@ -270,7 +270,7 @@ void *AnimationManager::addAnimationCacheOneFile(int cutFlameWidth, int cutFlame
 
 
 
-void *AnimationManager::runParaparaAnimation(Sprite *target, const char *cacheName, int tag, bool loop)
+void *AnimationManager::runParaparaAnimation(Sprite *target, const char *cacheName,bool loop, int tag)
 {
 	AnimationCache *animationCache = AnimationCache::sharedAnimationCache();
 	// キャッシュから指定されたアニメーションを引っ張ってくる

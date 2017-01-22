@@ -7,7 +7,7 @@
 // ---------------------------------------
 
 #include "TitleScene.h"
-// #include <ui/UIButton.h>
+#include <ui/UIButton.h>
 #include "GameScene.hpp"
 
 USING_NS_CC;
@@ -27,30 +27,29 @@ bool TitleScene::init()
 
 	// 背景の作成、追加
 	Sprite* background = Sprite::create("title/title_back.png");
-	background->setZOrder(1);
 	background->setPosition(Vec2(windowSize.width / 2, windowSize.height / 2));
 	addChild(background);
 
 	// スタートボタンの作成、追加
-	//
-	//ui::Button* startButton = ui::Button::create("title/start_button.png");
-	//startButton->setPosition(Vec2(windowSize.width / 2, 300));
-	//addChild(startButton);
+	
+	ui::Button* startButton = ui::Button::create("title/start_button.png");
+	startButton->setPosition(Vec2(windowSize.width / 2, 300));
+	addChild(startButton);
 
-	//// スタートボタンのアクション
-	//startButton->addTouchEventListener([&](Ref* ref, ui::Widget::TouchEventType eventType)
-	//{
-	//	// ボタンが離されたら
-	//	if (eventType == ui::Widget::TouchEventType::ENDED)
-	//	{
-	//		// 次のシーンの作成
-	//		Scene* nextScene = GameScene::create();
-	//		nextScene = TransitionFade::create(1.0f, nextScene, Color3B::BLACK);
+	// スタートボタンのアクション
+	startButton->addTouchEventListener([&](Ref* ref, ui::Widget::TouchEventType eventType)
+	{
+		// ボタンが離されたら
+		if (eventType == ui::Widget::TouchEventType::ENDED)
+		{
+			// 次のシーンの作成
+			Scene* nextScene = GameScene::create();
+			nextScene = TransitionFade::create(1.0f, nextScene, Color3B::BLACK);
 
-	//		// 次のシーンに移動
-	//		_director->replaceScene(nextScene);
-	//	}
-	//});
+			// 次のシーンに移動
+			_director->replaceScene(nextScene);
+		}
+	});
 
 	EventListenerTouchOneByOne* listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = ([&](Touch* touch, Event* pEvent)

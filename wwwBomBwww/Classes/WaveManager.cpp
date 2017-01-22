@@ -79,8 +79,8 @@ void WaveManager::update(float delta)
     for(int i = 0; i < WAVE_TILE_MAX; i++)
     {
         // 波の移動タイミングで次の波を作る
-        if(_isAffect[i] && _affectTimer[i] > _waveAffectTiming[i])
-        //if(_isAffect[i] && _affectTimer[i] > 5)
+        //if(_isAffect[i] && _affectTimer[i] > _waveAffectTiming[i])
+        if(_isAffect[i] && _affectTimer[i] > 3)
         {
             // その波が移動しないなら伝えない
             if(_waves[i]->_status.dir == WaveTile::MOVE_DIR::STOP) continue;
@@ -106,7 +106,6 @@ void WaveManager::update(float delta)
             _affectTimer[i]++;
         }
     }
-    
     
     // 波とボムの当たり判定用
     {

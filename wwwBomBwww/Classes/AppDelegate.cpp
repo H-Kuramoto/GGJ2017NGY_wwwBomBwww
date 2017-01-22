@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "MultiResolution.h"
-#include "GameScene.hpp"
+//#include "GameScene.hpp"
 #include "TitleScene.h"
 USING_NS_CC;
 

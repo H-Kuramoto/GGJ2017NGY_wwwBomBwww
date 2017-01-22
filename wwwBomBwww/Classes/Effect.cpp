@@ -15,86 +15,24 @@ bool Effect::init()
 	return true;
 }
 
-Effect* Effect::Create(Scene* scene, EffectID id)
+Effect* Effect::Create(Node* node, Vec2 position, EffectID id )
 {
 	Effect* effect = new Effect();
 	effect->m_animation = Animation::create();
-	effect->m_currentScene = scene;
+	effect->m_currentScene = node;
+	effect->SetPosition(position);
 
 	// ループはデフォルトでするように
 	effect->m_loopFlg = true;
 
-	// ここから分岐
-	switch (id)
-	{
-		case ChargeEffect:
-			// スプライトアニメーションの読み込み
-			for (int i = 1; i <= 15; i++)
-			{
-				char c[128];
-				sprintf(c, "effects/charge_effect/charge_effect_%02d.png", i);
-				effect->m_animation->addSpriteFrameWithFileName(c);
-			}
-			effect->m_animation->setDelayPerUnit(0.02f);
-
-			effect->m_onceAction.pushBack(ScaleTo::create(0, 0));
-			effect->m_startAction.pushBack(ScaleTo::create(effect->m_animation->getDuration() * 3.5f, 1));
-			effect->m_endAction.pushBack(ScaleTo::create(effect->m_animation->getDuration(), 0));
-			break;
-		case BombExplode:
-			// スプライトアニメーションの読み込み
-			for (int i = 1; i <= 33; i++)
-			{
-				char c[128];
-				sprintf(c, "effects/bomb_explode/bomb_explode_%02d.png", i);
-				effect->m_animation->addSpriteFrameWithFileName(c);
-			}
-			effect->m_animation->setDelayPerUnit(0.02f);
-			effect->m_loopFlg = false;
-			// effect->m_onceAction.pushBack(ScaleTo::create(0, 0));
-			// effect->m_startAction.pushBack(ScaleTo::create(effect->m_animation->getDuration() * 3.5f, 1));
-			// effect->m_endAction.pushBack(ScaleTo::create(effect->m_animation->getDuration(), 0));
-			break;
-		case Ready:
-			effect->m_animation->addSpriteFrameWithFileName("ready.png");
-			effect->m_animation->addSpriteFrameWithFileName("go.png");
-			effect->m_animation->setDelayPerUnit(0.6f);
-			effect->m_loopFlg = false;
-			effect->m_onceAction.pushBack(
-				Sequence::create(
-					Place::create(Vec2(1920 + 400, 400)),
-					MoveTo::create(0.6f, Vec2(1920 / 2, 400)),
-					nullptr));
-			effect->m_onceAction.pushBack(
-				Spawn::create(
-					FadeOut::create(0.6f),
-					ScaleTo::create(0.6f, 2.0f),
-					nullptr));
-			break;
-		case Win:
-			effect->m_animation->addSpriteFrameWithFileName("win.png");
-			effect->m_animation->setDelayPerUnit(1);
-			effect->m_onceAction.pushBack(
-				Sequence::create(
-					ScaleTo::create(0,0),
-					ScaleTo::create(0.4f, 1.0f),
-					nullptr));
-			break;
-		case Lose:
-			break;
-	}
-
-	// ここまで分岐
+	// エフェクトの作成
+	effect->CreateEffect(id);
 
 	// アニメーションが消えないようにする
 	effect->m_animation->retain();
 
+	// 生成したエフェクトの返却
 	return effect;
-}
-
-void Effect::SetPosition(Vec2 position)
-{
-	m_position = position;
 }
 
 void Effect::Start()
@@ -110,26 +48,26 @@ void Effect::Start()
 	m_animation->setRestoreOriginalFrame(false);
 
 	if(m_onceAction.size() > 0)
-	// 開始時に一度だけ行うアニメーション
-	m_sprite->runAction(
-		Sequence::create(m_onceAction)
-	);
+		// 開始時に一度だけ行うアニメーション
+		m_sprite->runAction(
+			Sequence::create(m_onceAction)
+		);
 
 	if (m_startAction.size() > 0)
-	// 開始時に行うアニメーション(ループ時にも行う)
-	m_sprite->runAction(
-		RepeatForever::create(
-			Sequence::create(m_startAction)
-			)
-		);
+		// 開始時に行うアニメーション(ループ時にも行う)
+		m_sprite->runAction(
+			RepeatForever::create(
+				Sequence::create(m_startAction)
+				)
+			);
 
 	if(m_loopFlg)
-	// スプライトアニメーション
-	m_sprite->runAction(
-		RepeatForever::create(
-			Animate::create(m_animation)
-			)
-		);
+		// スプライトアニメーション
+		m_sprite->runAction(
+			RepeatForever::create(
+				Animate::create(m_animation)
+				)
+			);
 
 	else
 		m_sprite->runAction(
@@ -144,9 +82,10 @@ void Effect::Start()
 				,nullptr)
 			);
 			
+	// アニメーションの実行フラグを立てる
+	m_isRunning = true;
 
-	m_currentScene->addChild(m_sprite, INT_MAX);
-
+	m_currentScene->addChild(m_sprite, m_zOrder);
 }
 
 void Effect::End()
@@ -155,53 +94,120 @@ void Effect::End()
 		return;
 
 	if (m_endAction.size() > 0)
-	m_sprite->runAction(
-		Sequence::create(
-			Sequence::create(m_endAction),
-			CallFunc::create([&](){
-				m_sprite->stopAllActions();
-				m_sprite->removeFromParent();
-				m_sprite = nullptr;
-			}),
-			nullptr)
-		);
+		m_sprite->runAction(
+			Sequence::create(
+				Sequence::create(m_endAction),
+				CallFunc::create([&](){
+					m_sprite->stopAllActions();
+					m_sprite->removeFromParent();
+					m_sprite = nullptr;
+				}),
+				nullptr)
+			);
 }
 
-/*
-Sprite* EffectManager::EffectPurified(Point location, std::string name, bool loop)
+void Effect::CreateEffect(EffectID id)
 {
-	// ループか
-	Animation* animation = Animation::create();
-	for (int i = 1; i <= 15; i++)
+	switch (id)
 	{
-		char c[128];
-		sprintf_s(c, "effects/charge_effect/charge_effect_%02d.png", i);
-		animation->addSpriteFrameWithFileName(c);
+		case ChargeEffect:
+			// スプライトアニメーションの読み込み
+			for (int i = 1; i <= 15; i++)
+			{
+				char c[128];
+				sprintf(c, "effects/charge_effect/charge_effect_%02d.png", i);
+				m_animation->addSpriteFrameWithFileName(c);
+			}
+			m_animation->setDelayPerUnit(0.02f);
+
+			m_onceAction.pushBack(ScaleTo::create(0, 0));
+			m_startAction.pushBack(ScaleTo::create(m_animation->getDuration() * 3.5f, 1));
+			m_endAction.pushBack(ScaleTo::create(m_animation->getDuration(), 0));
+			break;
+		case BombExplode:
+			// スプライトアニメーションの読み込み
+			for (int i = 1; i <= 33; i++)
+			{
+				char c[128];
+				sprintf(c, "effects/bomb_explode/bomb_explode_%02d.png", i);
+				m_animation->addSpriteFrameWithFileName(c);
+			}
+			m_animation->setDelayPerUnit(0.02f);
+			m_loopFlg = false;
+			break;
+		case Ready:
+			m_animation->addSpriteFrameWithFileName("ready.png");
+			m_animation->addSpriteFrameWithFileName("go.png");
+			m_animation->setDelayPerUnit(0.6f);
+			m_loopFlg = false;
+			m_onceAction.pushBack(
+				Sequence::create(
+					Place::create(Vec2(1920 + 400, 400)),
+					MoveTo::create(0.6f, Vec2(1920 / 2, 400)),
+					nullptr));
+			m_onceAction.pushBack(
+				Spawn::create(
+					FadeOut::create(0.6f),
+					ScaleTo::create(0.6f, 2.0f),
+					nullptr));
+			break;
+		case Win:
+			m_animation->addSpriteFrameWithFileName("win.png");
+			m_animation->setDelayPerUnit(1);
+			m_onceAction.pushBack(
+				ScaleTo::create(0, 0)
+				);
+			m_onceAction.pushBack(
+				ScaleTo::create(0.4f, 1.0f)
+				);
+			m_startAction.pushBack(
+				EaseInOut::create(
+					Sequence::create(
+						ScaleTo::create(0.5f, 0.5f),
+						ScaleTo::create(0.5f, 1.0f),
+						nullptr),
+					1.5f)
+				);
+			break;
+		case Lose:
+			m_animation->addSpriteFrameWithFileName("lose.png");
+			m_animation->setDelayPerUnit(1);
+			m_onceAction.pushBack(
+				Place::create(m_position)
+				);
+			m_onceAction.pushBack(
+				EaseOut::create(
+					MoveTo::create(2.0f, Vec2(300, 300)),
+					1.5f)
+				);
+			break;
+		case Caution:
+			m_animation->addSpriteFrameWithFileName("ojama_caution.png");
+			m_animation->setDelayPerUnit(1);
+			m_onceAction.pushBack(
+				Place::create(Vec2(m_position.x, 920))
+				);
+			m_onceAction.pushBack(
+				EaseInOut::create(
+					Repeat::create(
+						Sequence::create(
+							ScaleTo::create(0.06f, 0, 1),
+							ScaleTo::create(0.06f, 1, 1),
+							nullptr
+							),
+						2),
+					1.5f)
+				);
+			break;
 	}
 
-	// アニメーション間隔
-	animation->setDelayPerUnit(0.02f);
-	animation->setRestoreOriginalFrame(true);
-
-	Animate *animateAction = Animate::create(animation);
-
-	auto sprite2 = cocos2d::Sprite::create();
-	if (loop)
+	// ループしないアニメーションの末尾に実行フラグを折るアクションを追加
+	if (m_loopFlg != true)
 	{
-		sprite2->runAction(RepeatForever::create(animateAction));
-	}
-	else
-	{
-		sprite2->runAction(
-			Sequence::create(animateAction,
-				CallFunc::create(
-					[sprite2]()
+		m_onceAction.pushBack(CallFunc::create([&]()
 		{
-			sprite2->removeFromParentAndCleanup(true);
-		}), NULL));
+			m_isRunning = false;
+		}));
 	}
-	sprite2->setPosition(location);
-	currentScene->addChild(sprite2, INT_MAX);
-	return sprite2;
+
 }
-*/

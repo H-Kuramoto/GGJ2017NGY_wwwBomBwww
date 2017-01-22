@@ -26,14 +26,13 @@ bool TitleScene::init()
 	Size windowSize = _director->getVisibleSize();
 
 	// 背景の作成、追加
-	Sprite* background = Sprite::create("title/title_back.png");
-	background->setZOrder(1);
+	Sprite* background = Sprite::create("TitleScene/title_back.png");
 	background->setPosition(Vec2(windowSize.width / 2, windowSize.height / 2));
 	addChild(background);
 
 	// スタートボタンの作成、追加
 	//
-	//ui::Button* startButton = ui::Button::create("title/start_button.png");
+	//ui::Button* startButton = ui::Button::create("TitleScene/start_button.png");
 	//startButton->setPosition(Vec2(windowSize.width / 2, 300));
 	//addChild(startButton);
 
@@ -61,15 +60,17 @@ bool TitleScene::init()
 			effect = Effect::Create(this, touchPos, EffectID::Ready);
 
 		effect->SetPosition(touchPos);
-		effect->SetZOrder(0);
+		effect->SetZOrder(100);
 		effect->Start();
 		return true;
 	});
 
 	listener->onTouchEnded = ([&](Touch* touch, Event* pEvent)
 	{
-		log("touch ended");
+		Vec2 touchPos = touch->getLocation();
+
 		effect->End();
+		effect = nullptr;
 	});
 	_director->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 

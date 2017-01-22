@@ -138,17 +138,18 @@ void Effect::CreateEffect(EffectID id)
 		case Ready:
 			m_animation->addSpriteFrameWithFileName("ready.png");
 			m_animation->addSpriteFrameWithFileName("go.png");
-			m_animation->setDelayPerUnit(0.6f);
+			m_animation->setDelayPerUnit(1.4f);
 			m_loopFlg = false;
 			m_onceAction.pushBack(
 				Sequence::create(
 					Place::create(Vec2(1920 + 400, 400)),
 					MoveTo::create(0.6f, Vec2(1920 / 2, 400)),
+					DelayTime::create(0.8f),
 					nullptr));
 			m_onceAction.pushBack(
 				Spawn::create(
-					FadeOut::create(0.6f),
-					ScaleTo::create(0.6f, 2.0f),
+					FadeOut::create(0.8f),
+					ScaleTo::create(0.8f, 2.0f),
 					nullptr));
 			break;
 		case Win:
@@ -173,11 +174,19 @@ void Effect::CreateEffect(EffectID id)
 			m_animation->addSpriteFrameWithFileName("lose.png");
 			m_animation->setDelayPerUnit(1);
 			m_onceAction.pushBack(
-				Place::create(m_position)
+				Place::create(Vec2(m_position.x, 1200))
 				);
 			m_onceAction.pushBack(
 				EaseOut::create(
-					MoveTo::create(2.0f, Vec2(300, 300)),
+					MoveTo::create(2.0f, m_position),
+					1.5f)
+				);
+			m_startAction.pushBack(
+				EaseInOut::create(
+					Sequence::create(
+						ScaleTo::create(0.5f, 0.8f),
+						ScaleTo::create(0.5f, 1.0f),
+						nullptr),
 					1.5f)
 				);
 			break;
@@ -185,18 +194,32 @@ void Effect::CreateEffect(EffectID id)
 			m_animation->addSpriteFrameWithFileName("ojama_caution.png");
 			m_animation->setDelayPerUnit(1);
 			m_onceAction.pushBack(
+				FadeOut::create(0)
+				);
+			m_onceAction.pushBack(
 				Place::create(Vec2(m_position.x, 920))
 				);
 			m_onceAction.pushBack(
-				EaseInOut::create(
-					Repeat::create(
-						Sequence::create(
-							ScaleTo::create(0.06f, 0, 1),
-							ScaleTo::create(0.06f, 1, 1),
-							nullptr
-							),
-						2),
-					1.5f)
+				Spawn::create(
+					EaseInOut::create(
+						Repeat::create(
+							Sequence::create(
+								ScaleTo::create(0.06f, 0, 1),
+								ScaleTo::create(0.06f, 1, 1),
+								nullptr
+								),
+							1),
+						1.5f),
+					FadeIn::create(0.12f),
+					nullptr)
+				);
+			m_onceAction.pushBack(
+				EaseBackOut::create(
+					Sequence::create(
+						ScaleTo::create(0.2f, 1.5f),
+						ScaleTo::create(0.2f, 1.0f),
+						nullptr)
+					)
 				);
 			break;
 	}

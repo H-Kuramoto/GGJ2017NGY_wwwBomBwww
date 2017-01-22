@@ -10,6 +10,8 @@
 #include "MultiResolution.h"
 #include "GameLayer.hpp"
 
+#include <SimpleAudioEngine.h>
+
 bool WaveManager::init()
 {
     if(!Node::init())
@@ -37,6 +39,8 @@ bool WaveManager::init()
     }
     
     _power[0] = _power[1] = 0.0f;
+    
+    frameCnt = 0;
     
     // タッチの処理の追加
     auto touchListener = cocos2d::EventListenerTouchAllAtOnce::create();//マルチタップ
@@ -75,8 +79,8 @@ void WaveManager::update(float delta)
     for(int i = 0; i < WAVE_TILE_MAX; i++)
     {
         // 波の移動タイミングで次の波を作る
-        //if(_isAffect[i] && _affectTimer[i] > _waveAffectTiming[i])
-        if(_isAffect[i] && _affectTimer[i] > 5)
+        if(_isAffect[i] && _affectTimer[i] > _waveAffectTiming[i])
+        //if(_isAffect[i] && _affectTimer[i] > 5)
         {
             // その波が移動しないなら伝えない
             if(_waves[i]->_status.dir == WaveTile::MOVE_DIR::STOP) continue;
@@ -117,7 +121,7 @@ void WaveManager::update(float delta)
         }
     }
     
-    
+    frameCnt++;
 }
 
 void WaveManager::startWave(int elem, WaveTile::MOVE_DIR dir, float power)

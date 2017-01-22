@@ -9,6 +9,7 @@
 #include "GameLayer.hpp"
 #include "MultiResolution.h"
 
+#include <SimpleAudioEngine.h>
 #include "AnimationManager.h"
 
 bool GameLayer::init()
@@ -33,7 +34,7 @@ bool GameLayer::init()
     
     _bomb = Bomb::create();
     _bomb->setPositionX(WAVE_REGION_WIDTH/2);
-    _bomb->setPositionY(500);
+    _bomb->setPositionY(300);
     _waveRegioin->addChild(_bomb);
     
     
@@ -100,6 +101,7 @@ void GameLayer::gameFinish()
         return;
     }
     
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/explode.wav");
     AnimationManager::runParaparaAnimation(_bomb, bomb_AnimName, false);
     
     _playerSp[0]->result(winLeft);

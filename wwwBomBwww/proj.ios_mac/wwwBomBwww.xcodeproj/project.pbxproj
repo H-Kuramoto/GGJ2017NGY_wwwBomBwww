@@ -102,6 +102,8 @@
 		EE77D6211E3399B700B8A052 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = EE77D60F1E338CF100B8A052 /* win.png */; };
 		EE77D6261E34335500B8A052 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6241E34335500B8A052 /* Player.cpp */; };
 		EE77D6271E34335500B8A052 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE77D6241E34335500B8A052 /* Player.cpp */; };
+		EE77D62C1E34697800B8A052 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = EE77D62B1E34697800B8A052 /* sound */; };
+		EE77D62E1E346C1300B8A052 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = EE77D62B1E34697800B8A052 /* sound */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +231,7 @@
 		EE77D60F1E338CF100B8A052 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
 		EE77D6241E34335500B8A052 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		EE77D6251E34335500B8A052 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		EE77D62B1E34697800B8A052 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +356,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EE77D62B1E34697800B8A052 /* sound */,
 				EE77D60B1E338CF100B8A052 /* effects */,
 				EE77D60C1E338CF100B8A052 /* title */,
 				EE77D60D1E338CF100B8A052 /* go.png */,
@@ -575,6 +579,7 @@
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				EE77D6101E338CF100B8A052 /* effects in Resources */,
+				EE77D62C1E34697800B8A052 /* sound in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
@@ -601,6 +606,7 @@
 				EE77D6201E3399B700B8A052 /* ready.png in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				EE77D61F1E3399B700B8A052 /* go.png in Resources */,
+				EE77D62E1E346C1300B8A052 /* sound in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,

@@ -9,6 +9,8 @@
 #include "GameScene.hpp"
 #include "MultiResolution.h"
 
+#include <SimpleAudioEngine.h>
+
 bool GameScene::init()
 {
     if(!Scene::init())
@@ -16,10 +18,15 @@ bool GameScene::init()
         return false;
     }
     
+    CocosDenshion::SimpleAudioEngine::getInstance()->stopAllEffects();
+    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/game_main_bgm.wav");
+    
     _time = 10;
     _frameCnt = 0;
     _isPlay = false;
     _isWaiteRetry = false;
+    _sceneChangeOK = false;
     
     _gameLayer = GameLayer::create();
     this->addChild(_gameLayer);
@@ -34,6 +41,11 @@ bool GameScene::init()
     _startEffect = Effect::Create(this, this->getPosition(), EffectID::Ready);
     _startEffect->Start();
     
+    
+    _tapToRetry = Sprite::create("GameScene/tap_to_retry.png");
+    _tapToRetry->setOpacity(0);
+    _tapToRetry->setPosition(designResolutionSize/2);
+    this->addChild(_tapToRetry);
     
     
     // タッチの処理の追加
@@ -52,17 +64,17 @@ bool GameScene::init()
     
     this->scheduleUpdate();
     
-    gameStart();
+    //gameStart();
     
     return true;
 }
 
 void GameScene::update(float delta)
 {
-//    if(!_isPlay && _startEffect)
-//    {
-//        
-//    }
+    if(!_isPlay && !_startEffect->GetIsRunning() && !_isWaiteRetry)
+    {
+        gameStart();
+    }
     
     if(_frameCnt > 0 && _isPlay && _frameCnt % 60 == 0)
     {
@@ -96,6 +108,8 @@ void GameScene::gameStart()
     _isPlay = true;
     _time = 10;
     _frameCnt = 0;
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/whistle.wav");
 }
 
 void GameScene::gameFinish()
@@ -104,15 +118,21 @@ void GameScene::gameFinish()
     _isPlay = false;
     _gameLayer->gameFinish();
     _isWaiteRetry = true;
+    
+    _tapToRetry->runAction(Sequence::create(DelayTime::create(1.5f),
+                                            FadeIn::create(1.0f),
+                                            CallFunc::create([&](){_sceneChangeOK = true;}),
+                                            NULL));
+    
 }
 
 void GameScene::onTouchesBegan(const std::vector<Touch *> &touches, cocos2d::Event *unused_event)
 {
- }
+}
 
 void GameScene::onTouchesEnded(const std::vector<Touch *> &touches, cocos2d::Event *unused_event)
 {
-    if(_isWaiteRetry)
+    if(_isWaiteRetry && _sceneChangeOK)
     {
         Director::getInstance()->replaceScene(GameScene::create());
     }
@@ -129,7 +149,7 @@ void GameScene::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::E
 
 void GameScene::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
-    if(_isWaiteRetry)
+    if(_isWaiteRetry && _sceneChangeOK)
     {
         Director::getInstance()->replaceScene(GameScene::create());
     }

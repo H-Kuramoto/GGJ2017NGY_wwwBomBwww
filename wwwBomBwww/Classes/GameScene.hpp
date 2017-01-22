@@ -26,6 +26,7 @@ public:
     GameLayer *_gameLayer;
     Sprite *_timerSp;
     Effect *_startEffect;
+    Sprite *_tapToRetry;
     
     void gameStart();
     void gameFinish();
@@ -42,6 +43,7 @@ private:
     int _frameCnt;
     bool _isPlay;
     bool _isWaiteRetry;
+    bool _sceneChangeOK;
     
     
     

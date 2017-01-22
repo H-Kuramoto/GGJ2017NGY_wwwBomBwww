@@ -34,7 +34,7 @@ void Bomb::moveX(int dir, float wavePower)
 {
     
     this->setPositionX(this->getPositionX() + (dir * wavePower/1.5f));
-    this->setPositionY(this->getPositionY() + 0.5f + wavePower*1.4f);
+    this->setPositionY(this->getPositionY() + 0.5f + wavePower);
     if(dir == 1)
     {
         this->setFlippedX(true);

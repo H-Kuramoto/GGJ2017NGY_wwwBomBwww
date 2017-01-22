@@ -33,6 +33,9 @@ private:
     bool _isLeftChara;
     Effect *_effect;
     
+    int _soundID;
+    int _chargeSound;
+    
     };
 
 

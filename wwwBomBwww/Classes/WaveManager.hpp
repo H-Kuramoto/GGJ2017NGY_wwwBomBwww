@@ -11,8 +11,8 @@
 
 #define WAVE_TILE_MAX 100
 #define WAVE_REGION_WIDTH 1300.0f
-#define WAVE_AFFECT_TIMING_MAX 15
-#define WAVE_AFFECT_TIMING_MIN 5
+#define WAVE_AFFECT_TIMING_MAX 7
+#define WAVE_AFFECT_TIMING_MIN 2
 
 #include <stdio.h>
 #include "cocos2d.h"
@@ -49,7 +49,7 @@ public:
     
 private:
     int makeAffectTiming(float wavePower);
-    
+    int frameCnt;
     
 };
 

@@ -10,6 +10,8 @@
 #include <ui/UIButton.h>
 #include "GameScene.hpp"
 
+#include <SimpleAudioEngine.h>
+
 USING_NS_CC;
 // USING_NS_CC_EXT;
 
@@ -22,6 +24,8 @@ bool TitleScene::init()
 		return false;
 	}
 
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/title_bgm.wav",true);
+    
 	// 画面サイズ
 	Size windowSize = _director->getVisibleSize();
 
@@ -42,6 +46,9 @@ bool TitleScene::init()
 		// ボタンが離されたら
 		if (eventType == ui::Widget::TouchEventType::ENDED)
 		{
+            
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/button_push.wav");
+            
 			// 次のシーンの作成
 			Scene* nextScene = GameScene::create();
 			nextScene = TransitionFade::create(1.0f, nextScene, Color3B::BLACK);

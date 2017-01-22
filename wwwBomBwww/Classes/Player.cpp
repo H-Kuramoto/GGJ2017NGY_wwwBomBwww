@@ -9,6 +9,8 @@
 #include "Player.hpp"
 #include "AnimationManager.h"
 
+#include <SimpleAudioEngine.h>
+
 Player* Player::create(bool isLeftChara)
 {
     Player *pRet = new Player();
@@ -36,6 +38,10 @@ bool Player::init(bool isLeftChara)
     _isLeftChara = isLeftChara;
     _isCharging = false;
     
+    _soundID = 0;
+    _chargeSound = 0;
+    
+    
     this->initWithFile("GameScene/player/main/player_01.png");
     this->setFlippedX(!isLeftChara);
     
@@ -61,6 +67,9 @@ void Player::powerCharge()
         AnimationManager::runParaparaAnimation(this, player_Charge_animName);
         _isCharging = true;
         _effect->Start();
+        
+        _soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/player_action.wav",true);
+        _chargeSound = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/charge.wav",true);
     }
 }
 
@@ -71,6 +80,9 @@ void Player::appearWave()
         this->stopAllActions();
         _isCharging = false;
         _effect->End();
+        CocosDenshion::SimpleAudioEngine::getInstance()->stopEffect(_soundID);
+        CocosDenshion::SimpleAudioEngine::getInstance()->stopEffect(_chargeSound);
+        
     }
 }
 
@@ -110,7 +122,8 @@ void Player::result(bool isWin)
                                          NULL
                                          )
                         );
-    
+    CocosDenshion::SimpleAudioEngine::getInstance()->stopAllEffects();
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/result.wav");
     
 }
 

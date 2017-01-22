@@ -59,3 +59,11 @@ Rect Bomb::getRect()
     return hitCollision;
 
 }
+
+void Bomb::destroySet()
+{
+    this->runAction(Sequence::create(DelayTime::create(1.0f),
+                                     CallFunc::create([&](){this->removeFromParent();}),
+                                     NULL)
+                    );
+}

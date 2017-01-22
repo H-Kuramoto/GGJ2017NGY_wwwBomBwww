@@ -101,8 +101,12 @@ void GameLayer::gameFinish()
         return;
     }
     
+    _waveManager->unscheduleUpdate();
+    
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/explode.wav");
+    
     AnimationManager::runParaparaAnimation(_bomb, bomb_AnimName, false);
+    _bomb->destroySet();
     
     _playerSp[0]->result(winLeft);
     _playerSp[1]->result(!winLeft);

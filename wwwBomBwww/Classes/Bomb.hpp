@@ -26,6 +26,7 @@ public:
     
     void moveX(int dir, float wavePower);
     Rect getRect();
+    void destroySet();
 private:
 };
 

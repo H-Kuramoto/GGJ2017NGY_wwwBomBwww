@@ -16,13 +16,16 @@ enum EffectID
 	Ready,
 	Win,
 	Lose,
+	// お邪魔の注意喚起
+	// y座標は無視されます
+	Caution,
 };
 
 class Effect
 {
 	private:
-		// 所属先シーン
-		cocos2d::Node* m_currentNode;
+		// 所属先ノード
+		cocos2d::Node* m_currentScene;
 		
 		// スプライト
 		cocos2d::Sprite* m_sprite;
@@ -46,14 +49,45 @@ class Effect
 
 		// ループさせるか
 		bool m_loopFlg;
+
+		// アニメーションが実行中か
+		bool m_isRunning;
+
+		// Zorder
+		int m_zOrder;
 	public:
 		virtual bool init();
 
-		static Effect* Create(cocos2d::Node* scene, EffectID id);
+		static Effect* Create(cocos2d::Node* node, cocos2d::Vec2 position, EffectID id);
 
-		void SetPosition(cocos2d::Vec2 position);
+		/// <summary>
+		///	座標の設定
+		/// </summary>
+		/// <param name="position"></param>
+		void SetPosition(cocos2d::Vec2 position)
+		{
+			m_position = position;
+		}
+
+		/// <summary>
+		/// ZOrderの設定
+		/// </summary>
+		/// <param name="order"></param>
+		void SetZOrder(int order)
+		{
+			m_zOrder = order;
+		}
+
+		bool GetIsRunning()
+		{
+			return m_isRunning;
+		}
 
 		void Start();
 
 		void End();
+
+	private:
+		// エフェクト作成関数
+		void CreateEffect(EffectID id);
 };
